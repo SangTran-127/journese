@@ -1,0 +1,93 @@
+"use client";
+import React from "react";
+
+const ConfirmDetail = ({
+  _id,
+  status,
+  phone,
+  firstName,
+  lastName,
+  email,
+  dob,
+  citizen_id,
+  citizen_images,
+  createdAt,
+  updatedAt,
+}: any) => {
+  return (
+    <div>
+      <div className="">
+        <div className="row">
+          <div className="col-md-8">
+            <div className="card">
+              <div className="card-header">User Image</div>
+              <div className="card-body">
+                <ul>
+                  {citizen_images.length > 0 && (
+                    <li className="list-group-item">
+                      <span className="fw-bold">Citizen ID Images:</span>
+                    </li>
+                  )}
+                  {citizen_images.map((imageUrl: string, index: number) => (
+                    <li className="list-group-item" key={index}>
+                      <img
+                        src={imageUrl}
+                        alt={`Citizen ID Image ${index + 1}`}
+                        className="img-fluid"
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="card">
+              <div className="card-header">User Details</div>
+              <div className="card-body">
+                <ul className="list-group list-group-flush">
+                  <li className="list-group-item">
+                    <span className="fw-bold">User ID:</span> {_id}
+                  </li>
+                  <li className="list-group-item">
+                    <span className="fw-bold">Status:</span> {status}
+                  </li>
+                  <li className="list-group-item">
+                    <span className="fw-bold">Phone Number:</span> {phone}
+                  </li>
+                  <li className="list-group-item">
+                    <span className="fw-bold">Full Name:</span> {firstName}{" "}
+                    {lastName}
+                  </li>
+                  <li className="list-group-item">
+                    <span className="fw-bold">Email:</span> {email}
+                  </li>
+                  <li className="list-group-item">
+                    <span className="fw-bold">Date of Birth:</span> {dob}
+                  </li>
+                  <li className="list-group-item">
+                    <span className="fw-bold">Citizen ID:</span> {citizen_id}
+                  </li>
+                  <li className="list-group-item">
+                    <span className="fw-bold">Created At:</span>{" "}
+                    {new Date(createdAt).toLocaleDateString()}
+                  </li>
+                  <li className="list-group-item">
+                    <span className="fw-bold">Updated At:</span>{" "}
+                    {new Date(updatedAt).toLocaleDateString()}
+                  </li>
+                </ul>
+                <div className="d-flex justify-content-center gap-3">
+                  <button className="btn btn-info">Approve</button>
+                  <button className="btn btn-danger">Reject</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ConfirmDetail;
